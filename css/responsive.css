@@ -1,0 +1,76 @@
+/* Small Screen */
+@media (max-width: 768px) {
+    .navbar .navbar-brand {
+        margin: 0 auto !important;
+        font-size: 14px;
+    }
+}
+
+/* Small to Medium Screen */
+@media (max-width: 991px) 
+{
+    /* Header */
+    p, .btn {font-size: 14px;}
+    .header,
+    .navbar,
+    .navbar a {
+        padding-top: 0 !important;
+    }
+
+    .navbar .navbar-toggler {
+        display: none;
+    }
+
+    .navbar .navbar-brand {
+        margin: 10px auto;
+    }
+
+    .header .header-info {padding: 15px 0;}
+
+    .header .header-info h2,
+    .header .header-img {text-align: center;}
+
+    .header .header-img img {width: 80%;}
+
+    /* Display Temp */
+    .display-temp .city-temp {display: block !important;}
+
+    .display-temp #search-bar {margin-bottom: 10px !important;}
+
+    .display-temp .search,
+    .display-temp .temp-card {
+        width: 100%;
+        margin: 20px 0 !important;
+    }
+
+    /* Download Mobile App */
+    .download-app .download-info {margin-top: 1rem !important;}
+
+    .download-app .download-img img {
+        width: 65%;
+    }
+
+    /* Subscribe */
+    .subscribe {
+        margin: 2rem 0 !important;
+        padding: 0 !important;
+    }
+
+    .subscribe .subscribe-container {flex-direction: column!important;}
+
+    .subscribe .subscribe-info,
+    .subscribe .subscribe-img {width: 100%;}
+
+    .subscribe .subscribe-info {padding-top: 1rem !important;}
+
+    .subscribe input {width: 90% !important;}
+
+    .subscribe .subscribe-img img {width: 50% !important;}
+
+    .subscribe .subscribe-container div:last-child {order: -1;}
+}
+
+
+
+
+
