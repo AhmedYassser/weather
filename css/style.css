@@ -11,8 +11,21 @@ html {
 /********* Start Navbar *********/
 .header {
     padding-top: 15px;
-    background-image: url(../images/wave-4.svg);
+    position: relative;
+    z-index: 1;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url(../images/wave-lg.svg);
     background-repeat: no-repeat;
+    background-position: top center ;
 }
 
 .navbar a {
@@ -25,8 +38,8 @@ html {
     transition: all 0.3s;
 }
 
-.navbar .nav-item:hover,
-.navbar .active {
+.navbar .nav-link:hover,
+.navbar .home {
     border-bottom: 1px solid #fff;
 }
 
