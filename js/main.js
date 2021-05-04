@@ -18,6 +18,7 @@ let today = document.getElementById("today"),
 
 //Next Days Variables:
 let nextDay = document.getElementsByClassName("nextDay"),
+    nextDate = document.getElementsByClassName("nextDate"),
     nextDayIcon = document.getElementsByClassName("nextDay-icon"),
     maxDegree = document.getElementsByClassName("max-degree"),
     minDegree = document.getElementsByClassName("min-degree"),
@@ -50,7 +51,8 @@ function displayTodayWeather() {
 function displayNextDaysWeather() {
     for(let i = 0; i < nextDay.length; i++)
     {
-        nextDay[i].innerHTML = weekDays[date.getDay()+i+1]
+        nextDay[i].innerHTML = weekDays[date.getDay()+i+1];
+        nextDate[i].innerHTML = `${date.getDate()+i+1} ${monthName[date.getMonth()]}`;
         nextDayIcon[i].setAttribute("src", `https:${responseData.forecast.forecastday[i+1].day.condition.icon}`);
         maxDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.maxtemp_c;
         minDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.mintemp_c;
