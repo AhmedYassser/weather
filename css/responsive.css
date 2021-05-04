@@ -1,8 +1,7 @@
 /* Small Screen */
 @media (max-width: 768px) {
     .navbar .navbar-brand {
-        margin: 0 auto !important;
-        font-size: 14px;
+        margin: 10px 0 !important;
     }
 }
 
@@ -22,7 +21,11 @@
     }
 
     .navbar .navbar-brand {
-        margin: 10px auto;
+        margin: 20px 0;
+    }
+
+    .header {
+        background-image: url(../images/wave.svg);
     }
 
     .header .header-info {padding: 15px 0;}
