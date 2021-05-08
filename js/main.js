@@ -37,8 +37,13 @@ async function getWeatherData() {
 
 //Display Today's Data:
 function displayTodayWeather() {
+
+    let dateApi = responseData.forecast.forecastday[0].date;
+    let date_components = dateApi.split("-");
+    let current_day = date_components[2];
+
     today.innerHTML = weekDays[date.getDay()];
-    todayDate.innerText = `${date.getDate()} ${monthName[date.getMonth()]}`;
+    todayDate.innerText = `${current_day} ${monthName[date.getMonth()]}`;
     cityLocation.innerHTML = responseData.location.name;
     todayDegree.innerHTML = responseData.current.temp_c;
     todayIcon.setAttribute("src", `https:${responseData.current.condition.icon}`);
@@ -48,12 +53,19 @@ function displayTodayWeather() {
     compass.innerText =responseData.current.wind_dir
 };
 
-//Function getNxtDay();
-function getNextDays(y, m, d) {
-   var d = new Date(y, m, d);
+//Next Day - Name Function;
+function getNextDays(nextDateApi) {
+
+   let d = new Date(nextDateApi);
    return d && weekDays[d.getDay()];
 };
 
+//Next Day - Month Function;
+function getNextDayMonth(nextDateApi) {
+
+    let m = new Date(nextDateApi);
+    return m && monthName[m.getMonth()];
+ };
 
 //Display Next Days Data:
 function displayNextDaysWeather() {
@@ -61,12 +73,10 @@ function displayNextDaysWeather() {
     {   
         let nextDateApi = responseData.forecast.forecastday[i+1].date;
         let nextDate_components = nextDateApi.split("-");
-        var current_year = nextDate_components[0];
-        var current_month = nextDate_components[1];
-        var current_day = nextDate_components[2];
+        let next_day = nextDate_components[2];
 
-        nextDay[i].innerHTML = getNextDays(current_year , current_month , current_day);
-        nextDate[i].innerHTML = `${current_day} ${monthName[date.getMonth()]}`;
+        nextDay[i].innerHTML = getNextDays(nextDateApi);
+        nextDate[i].innerHTML = `${next_day} ${getNextDayMonth(nextDateApi)}`;
         nextDayIcon[i].setAttribute("src", `https:${responseData.forecast.forecastday[i+1].day.condition.icon}`);
         maxDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.maxtemp_c;
         minDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.mintemp_c;
