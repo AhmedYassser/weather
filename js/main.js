@@ -13,11 +13,12 @@ let today = document.getElementById("today"),
     apiResponse,
     responseData,
     date = new Date(),
-    weekDays = ['Sunday','Monday','Tuesday','Wednesday','Thuresday','Friday','Saturday'],
+    weekDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
     monthName = ['Jan','Feb','March','April','May','June','July','Aug','Spet','Oct','Nov','Dec'];
 
 //Next Days Variables:
 let nextDay = document.getElementsByClassName("nextDay"),
+    afterNextDay = document.getElementsByClassName("afterNextDay"),
     nextDate = document.getElementsByClassName("nextDate"),
     nextDayIcon = document.getElementsByClassName("nextDay-icon"),
     maxDegree = document.getElementsByClassName("max-degree"),
@@ -47,16 +48,30 @@ function displayTodayWeather() {
     compass.innerText =responseData.current.wind_dir
 };
 
+//Function getNxtDay();
+function getNextDays(y, m, d) {
+   var d = new Date(y, m, d);
+   return d && weekDays[d.getDay()];
+};
+
+
 //Display Next Days Data:
 function displayNextDaysWeather() {
-    for(let i = 0; i < nextDay.length; i++)
-    {
-        nextDay[i].innerHTML = weekDays[date.getDay()+i+1];
-        nextDate[i].innerHTML = `${date.getDate()+i+1} ${monthName[date.getMonth()]}`;
+    for(let i = 0;  i < nextDay.length; i++)
+    {   
+        let nextDateApi = responseData.forecast.forecastday[i+1].date;
+        let nextDate_components = nextDateApi.split("-");
+        var current_year = nextDate_components[0];
+        var current_month = nextDate_components[1];
+        var current_day = nextDate_components[2];
+
+        nextDay[i].innerHTML = getNextDays(current_year , current_month , current_day);
+        nextDate[i].innerHTML = `${current_day} ${monthName[date.getMonth()]}`;
         nextDayIcon[i].setAttribute("src", `https:${responseData.forecast.forecastday[i+1].day.condition.icon}`);
         maxDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.maxtemp_c;
         minDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.mintemp_c;
         nextDayDescription[i].innerHTML= responseData.forecast.forecastday[i+1].day.condition.text;
+        
     }
 };
 
