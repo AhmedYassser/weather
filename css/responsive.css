@@ -9,6 +9,11 @@
 /* Small to Medium Screen */
 @media (max-width: 991px) 
 {
+    .sm-bg {
+        height: 20px;
+        background-color:  #37aec3 ;
+    }
+
     /* Header */
     p,
     .btn {font-size: 14px;}
