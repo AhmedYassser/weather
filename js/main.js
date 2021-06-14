@@ -45,7 +45,7 @@ function displayTodayWeather() {
     today.innerHTML = weekDays[date.getDay()];
     todayDate.innerText = `${current_day} ${monthName[date.getMonth()]}`;
     cityLocation.innerHTML = responseData.location.name;
-    todayDegree.innerHTML = responseData.current.temp_c;
+    todayDegree.innerHTML = Math.round(responseData.current.temp_c);
     todayIcon.setAttribute("src", `https:${responseData.current.condition.icon}`);
     description.innerHTML = responseData.current.condition.text;
     humidty.innerHTML = responseData.current.humidity;
@@ -78,8 +78,8 @@ function displayNextDaysWeather() {
         nextDay[i].innerHTML = getNextDays(nextDateApi);
         nextDate[i].innerHTML = `${next_day} ${getNextDayMonth(nextDateApi)}`;
         nextDayIcon[i].setAttribute("src", `https:${responseData.forecast.forecastday[i+1].day.condition.icon}`);
-        maxDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.maxtemp_c;
-        minDegree[i].innerHTML = responseData.forecast.forecastday[i+1].day.mintemp_c;
+        maxDegree[i].innerHTML = Math.round(responseData.forecast.forecastday[i+1].day.maxtemp_c);
+        minDegree[i].innerHTML = Math.round(responseData.forecast.forecastday[i+1].day.mintemp_c);
         nextDayDescription[i].innerHTML= responseData.forecast.forecastday[i+1].day.condition.text;
         
     }
