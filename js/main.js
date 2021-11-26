@@ -14,7 +14,7 @@ let today = document.getElementById("today"),
     responseData,
     date = new Date(),
     weekDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-    monthName = ['Jan','Feb','March','April','May','June','July','Aug','Spet','Oct','Nov','Dec'];
+    monthName = ['Jan','Feb','March','April','May','June','July','Aug','Sept','Oct','Nov','Dec'];
 
 //Next Days Variables:
 let nextDay = document.getElementsByClassName("nextDay"),
